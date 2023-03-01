@@ -20,13 +20,12 @@ const Index = ({ data }) => {
   const experience = get(data, 'site.siteMetadata.experience', false);
   const skills = get(data, 'site.siteMetadata.skills', false);
   const noBlog = !posts || !posts.length;
-  const noResume = false;
 
 
   return (
     <Layout>
       <SEO />
-      <Header metadata={data.site.siteMetadata} noBlog={noBlog} noResume={noResume}/>
+      <Header metadata={data.site.siteMetadata} noBlog={noBlog}/>
       {about && <SectionAbout about={about} />}
       {experience && experience.length && (
         <SectionExperience experience={experience} />
@@ -50,7 +49,7 @@ export const pageQuery = graphql`
         name
         title
         description
-        resume
+        resumeUrl
         about
         author
         github

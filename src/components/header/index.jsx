@@ -4,7 +4,6 @@ import React from 'react';
 import Animation from '../animation';
 
 import profileImg from '../../images/profile.jpg';
-import pdf from '../../../content/resume/resume.pdf';
 
 const classes = {
   wrapper: 'block mb-6 md:flex',
@@ -19,11 +18,12 @@ const classes = {
     'inline-block py-2 font-semibold text-xs text-gray-600 hover:text-black',
 };
 
-const Header = ({ metadata = {}, noBlog = false, noResume = false }) => {
+const Header = ({ metadata = {}, noBlog = false}) => {
   const twitter = get(metadata, 'author', false);
   const github = get(metadata, 'github', false);
   const linkedin = get(metadata, 'linkedin', false);
   const email = get(metadata, 'email', false);
+  const resumeUrl = get(metadata, 'resumeUrl', false);
 
   return (
     <Animation type='fadeDown' delay={400}>
@@ -40,10 +40,17 @@ const Header = ({ metadata = {}, noBlog = false, noResume = false }) => {
           <p className={classes.description}>{metadata.description}</p>
           <Animation type='fadeLeft' delay={600}>
           <ul className={classes.list}>
-            {!noResume && (
+            {resumeUrl && (
               <li className={classes.item}>
-                <a className={classes.link} href={pdf}>
+                <a className={classes.link} href={`./${resumeUrl}`}>
                   Resume
+                </a>
+              </li>
+            )}
+            {email && (
+              <li className={classes.item}>
+                <a className={classes.link} href={`mailto:${email}?subject=A visitor from ryanhgonzalez.github.io has left a note:`}>
+                  Email
                 </a>
               </li>
             )}
@@ -68,13 +75,6 @@ const Header = ({ metadata = {}, noBlog = false, noResume = false }) => {
               <li className={classes.item}>
                 <a className={classes.link} href={linkedin}>
                   LinkedIn
-                </a>
-              </li>
-            )}
-            {email && (
-              <li className={classes.item}>
-                <a className={classes.link} href={`mailto:${email}?subject=A visitor from https://ryanhgonzalez.github.io has left a note:`}>
-                  Contact Me
                 </a>
               </li>
             )}

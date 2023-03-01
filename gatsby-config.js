@@ -2,6 +2,7 @@ module.exports = {
     siteMetadata: {
     // Site URL for when it goes live
     siteUrl: `https://ryanhgonzalez.github.io`,
+    resumeUrl: `resume.pdf`,
     // Your Name
     name: `Ryan Gonzalez`,
     // Main Site Title
