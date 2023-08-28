@@ -42,7 +42,7 @@ const Header = ({ metadata = {}, noBlog = false}) => {
           <ul className={classes.list}>
             {resumeUrl && (
               <li className={classes.item}>
-                <a className={classes.link} href={`./${resumeUrl}`}>
+                <a className={classes.link} href={`/${resumeUrl}`}>
                   Resume
                 </a>
               </li>
